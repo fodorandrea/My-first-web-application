@@ -2,8 +2,8 @@ body {
    background-color: gainsboro; 
     }
 .viewer {
-   max-width: 800px;
-   max-height: 450px;  
+   max-width: 780px;
+   max-height: 458px;  
    margin: 0 auto;
    border-radius: 5px;
    box-shadow: 1px 2px 6px grey;
