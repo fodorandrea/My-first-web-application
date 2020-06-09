@@ -48,11 +48,30 @@ let loadPhoto = (photoNumber) => {
   }
 loadPhoto(currentPhoto);
 
+let currentPhotoMax = imagesData.length; 
+console.log (currentPhotoMax);
 $('#next-button').click(() => {
-  currentPhoto++;
+  $ ('#next-button img').css('opacity', "0.4");
+  $ ('#previous-button img').css('opacity', "1");
+  if (currentPhoto < currentPhotoMax-2) {
+    currentPhoto++;
+    }
+    else {
+      currentPhoto = 0;
+    }
   loadPhoto(currentPhoto);
-})
+  })
+
 $('#previous-button').click(() => {
-  currentPhoto = currentPhoto-1;
-  loadPhoto(currentPhoto);
-})
+  $ ('#previous-button img').css('opacity', "0.4");
+  $ ('#next-button img').css('opacity', "1");
+  if (currentPhoto ===0 ) {
+    currentPhoto = currentPhotoMax-1;
+    }
+    else {
+      currentPhoto = currentPhoto-1;
+    }
+    loadPhoto(currentPhoto);
+  })
+
+  

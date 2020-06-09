@@ -33,6 +33,7 @@ button {
     width: 6%;
     border: none;
     padding: 0;
+    outline: none;
     }
 #previous-button {
     border-radius: 5px 0px 0px 5px;
