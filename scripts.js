@@ -1,11 +1,11 @@
 let imagesData = [
   {
-    photo: 'images/DSC_0267.JPG',
+    photo: 'images/DSC_1092.JPG',
     title: 'Aliquam erat volutpat',
     description: 'Vestibulum in leo scelerisque, mollis mi eget, pellentesque nisi. Nulla interdum posuere ex, non feugiat sapien aliquet eu. Curabitur et odio est. Integer sit amet risus sit amet lacus efficitur tempus. Sed vel porta lorem. Pellentesque leo justo, vestibulum in lectus eu, consectetur eleifend urna.'
   },
   {
-    photo: 'images/DSC_1092.JPG',
+    photo: 'images/DSC_0267.JPG',
     title: 'Proin non neque mattis velit',
     description: 'Cras gravida at elit eu maximus. Suspendisse placerat urna arcu. Nullam pellentesque, elit eget eleifend luctus, quam orci fermentum velit, at condimentum dolor risus ut elit.'
   },
@@ -40,16 +40,16 @@ let imagesData = [
     description: 'Nunc lacinia orci diam, mollis dictum purus posuere quis. Fusce at fringilla sapien. Proin eu mauris eget neque egestas efficitur ac ac odio. '
   }
   ];
+
 let currentPhoto = 0;
 let loadPhoto = (photoNumber) => {
   $('#photo').attr('src', imagesData[photoNumber].photo);
   $('#photo-title').text(`${imagesData[currentPhoto].title}`);
   $('#photo-description').text(`${imagesData[currentPhoto].description}`);
-  }
+  };
 loadPhoto(currentPhoto);
 
 let currentPhotoMax = imagesData.length; 
-console.log (currentPhotoMax);
 $('#next-button').click(() => {
   $ ('#next-button img').css('opacity', "0.4");
   $ ('#previous-button img').css('opacity', "1");
@@ -60,7 +60,7 @@ $('#next-button').click(() => {
       currentPhoto = 0;
     }
   loadPhoto(currentPhoto);
-  })
+  });
 
 $('#previous-button').click(() => {
   $ ('#previous-button img').css('opacity', "0.4");
@@ -72,6 +72,29 @@ $('#previous-button').click(() => {
       currentPhoto = currentPhoto-1;
     }
     loadPhoto(currentPhoto);
-  })
+  });
 
   
+//imagesData.forEach ((photo) => { 
+// $('.thumbnails').append('<img src="images/DSC_8741.JPG">'); 
+// });
+//imagesData.forEach ((photo) => { 
+// $('.thumbnails').append('<img src=`${imagesData[i].photo}`>'); 
+// });
+
+let imgIndex = 0;
+for (let i = 0; i < imagesData.length; i++) {
+ let img = $('<img />').attr({
+      'id': imgIndex,
+      'src': `${imagesData[i].photo}`,
+    }).appendTo('.thumbnails');
+    imgIndex++;
+    };
+
+$('.thumbnails').click((event) => {
+  let indexClicked = $(event.target).attr('id');
+  $('#photo').attr('src', imagesData[indexClicked].photo);
+  });
+
+
+ 
