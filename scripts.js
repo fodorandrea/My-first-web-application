@@ -11,7 +11,7 @@ let imagesData = [
   },
   {
     photo: 'images/DSC_2889.JPG',
-    title: 'Aliquam erat volutpat',
+    title: 'Dolor ut fringilla magna',
     description: 'Maecenas ac orci eu lectus vehicula porttitor non sit amet turpis. Aliquam erat volutpat. Aenean sed ultricies tortor, vitae suscipit risus.'
   },
   {
@@ -27,7 +27,7 @@ let imagesData = [
   {
     photo: 'images/DSC_8194.JPG',
     title: 'Pellentesque at auctor enim',
-    description: 'Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut ornare augue quis leo aliquam imperdiet. '
+    description: 'Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut ornare augue quis leo aliquam imperdiet. Dignissim enim venenatis.'
   },
   {
     photo: 'images/DSC_8299.JPG',
@@ -41,19 +41,51 @@ let imagesData = [
   }
   ];
 
+let imgIndex = 0;
+for (let i = 0; i < imagesData.length; i++) {
+  let img = $('<img />').attr({
+  'id': imgIndex,
+    'src': `${imagesData[i].photo}`,
+   'title': `${imagesData[i].title}`,
+    }).appendTo('.thumbnails');
+    imgIndex++;
+   };
+
+
+//let imgIndex = 0;
+//for (let i = 0; i < imagesData.length; i++) {
+//    $('.thumbnails').append("<p class='img-container'><img  id=" +imgIndex+" src=" +imagesData[i].photo+ " title="+ imagesData[i].title+ "></p>");
+//    imgIndex++;
+//  };
+
+//let imgIndex = 0;
+//for (let i = 0; i < imagesData.length; i++) {
+//    $('.thumbnails').append("<img  id=" +imgIndex+" src=" +imagesData[i].photo+ " title="+ imagesData[i].title+ ">");
+//    $('.thumbnails').append("<p class=" +imgIndex+"> </p>");
+//   $('.' +imgIndex).text(`${imagesData[i].title}`);
+//    imgIndex++;
+//  };
+
 let currentPhoto = 0;
 let loadPhoto = (photoNumber) => {
+  $ ('.thumbnails img').css('top', '0px');
+  $ ('.thumbnails img').css('border', '0px');
   $('#photo').attr('src', imagesData[photoNumber].photo);
   $('#photo-title').text(`${imagesData[currentPhoto].title}`);
   $('#photo-description').text(`${imagesData[currentPhoto].description}`);
+  $ ('#'+ currentPhoto).css('top', '-15px');
+  $ ('#'+ currentPhoto).css('borderTop', '7px solid transparent');
+  $ ('#'+ currentPhoto).css('borderImage', 'url(1200px-White_triangle.svg.png) 18%');
+  $ ('#'+ currentPhoto).css('top', '-15px');
   };
 loadPhoto(currentPhoto);
+
 
 let currentPhotoMax = imagesData.length; 
 $('#next-button').click(() => {
   $ ('#next-button img').css('opacity', "0.4");
   $ ('#previous-button img').css('opacity', "1");
-  if (currentPhoto < currentPhotoMax-2) {
+  if (currentPhoto < currentPhotoMax-1) {
     currentPhoto++;
     }
     else {
@@ -74,27 +106,9 @@ $('#previous-button').click(() => {
     loadPhoto(currentPhoto);
   });
 
-  
-//imagesData.forEach ((photo) => { 
-// $('.thumbnails').append('<img src="images/DSC_8741.JPG">'); 
-// });
-//imagesData.forEach ((photo) => { 
-// $('.thumbnails').append('<img src=`${imagesData[i].photo}`>'); 
-// });
-
-let imgIndex = 0;
-for (let i = 0; i < imagesData.length; i++) {
- let img = $('<img />').attr({
-      'id': imgIndex,
-      'src': `${imagesData[i].photo}`,
-    }).appendTo('.thumbnails');
-    imgIndex++;
-    };
-
 $('.thumbnails').click((event) => {
-  let indexClicked = $(event.target).attr('id');
-  $('#photo').attr('src', imagesData[indexClicked].photo);
+  currentPhoto = $(event.target).attr('id');
+  loadPhoto(currentPhoto);
   });
 
 
- 

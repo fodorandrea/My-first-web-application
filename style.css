@@ -2,10 +2,10 @@ body {
    background-color: gainsboro; 
    }
 .viewer {
-   max-width: 780px;
-   max-height: 458px;  
+   max-width: 1060px;
+   max-height: 622px;  
    margin: 0 auto;
-   border-radius: 5px;
+   border-radius: 4px;
    box-shadow: 1px 2px 6px grey;
    display: flex;
    }
@@ -29,30 +29,43 @@ h1, p {
    font-family: 'Raleway', sans-serif;
    }
 button {
-   background: white;
    width: 6%;
    border: none;
    padding: 0;
    outline: none;
+   background: linear-gradient(to bottom, rgb(255,255,255) 0%, rgb(255,255,255) 61%, rgb(230,233,234) 97%, rgb(230,233,234) 100%);
    }
+button:hover {
+      cursor: pointer;
+      }
 #previous-button {
-   border-radius: 5px 0px 0px 5px;
+   border-radius: 4px 0px 0px 4px;
    }
 #next-button {
-   border-radius: 0px 5px 5px 0px;
+   border-radius: 0px 4px 5px 4px;
    }
 #previous-button img {
    transform: scaleX(-1);
    } 
 .thumbnails {
    margin: 20px auto;
-   width: 780px;
+   width: 1060px;
+   display: flex;
+   justify-content: center;
+   position: relative;
    }
 .thumbnails img {
-   height: 50px;
-   border-radius: 3px;
+   height: 90px;
+   width: 90px;
+   object-fit: cover;
+   border-radius: 2px;
    padding: 4px; 
    box-shadow: 0px 10px 5px -8px rgb(70, 68, 70);
    background: linear-gradient(to bottom, rgb(255,255,255) 0%, rgb(255,255,255) 61%, rgb(230,233,234) 97%, rgb(230,233,234) 100%);  
-   margin: 5px;}
-    
+   margin: 5px;
+   position: relative;
+}
+.thumbnails img:hover {
+   cursor: pointer;
+   }
+
